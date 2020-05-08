@@ -11,11 +11,13 @@
     "start": "node server/index.js",
     "server-dev": "nodemon server/index.js",
     "react-dev": "webpack -d --watch",
-    "build": "webpack"
+    "build": "webpack",
+    "seed-db": "node server/database/seedScript.js"
   },
   "dependencies": {
     "axios": "^0.19.2",
     "express": "^4.17.1",
+    "faker": "^4.1.0",
     "morgan": "^1.10.0",
     "pg": "^8.1.0",
     "prop-types": "^15.7.2",
