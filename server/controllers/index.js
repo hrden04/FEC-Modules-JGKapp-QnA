@@ -30,10 +30,10 @@ module.exports = {
     if (questionId) {
       model.getAnswersByQuestionId(questionId)
         .then((results) => results.rows)
-        .then((questions) => {
+        .then((answers) => {
           res.status(200).json({
             message: `Successfully retrieved answers for question id: ${questionId}`,
-            questions,
+            answers,
           });
         })
         .catch((err) => {
