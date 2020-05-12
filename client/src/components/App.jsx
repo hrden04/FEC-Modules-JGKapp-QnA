@@ -42,9 +42,11 @@ class App extends React.Component {
       <div>
         <Header />
         <Search />
-        {questions.slice(0, 4).map((question) => (
-          <Question question={question} key={question.question_id} />
-        ))}
+        <div className="question-list">
+          {questions.slice(0, 4).map((question) => (
+            <Question question={question} key={question.question_id} />
+          ))}
+        </div>
       </div>
     );
   }

@@ -2,7 +2,10 @@ import React from 'react';
 
 const Header = () => {
   return (
-    <div className="title">Customer questions & answers</div>
+    <div className="title">
+      <hr />
+      <h2>Customer questions & answers</h2>
+    </div>
   );
 };
 

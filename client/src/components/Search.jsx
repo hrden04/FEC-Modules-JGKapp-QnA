@@ -21,12 +21,18 @@ class Search extends React.Component {
   render() {
     const { searchtext } = this.state;
     return (
-      <input
-        type="search"
-        value={searchtext}
-        onChange={this.handleChange}
-        placeholder="Have a question? Search for answers"
-      />
+      <div className="search-wrapper">
+        <div className="input-container">
+          <i className="icon-search" />
+          <input
+            type="text"
+            className="search-input"
+            value={searchtext}
+            onChange={this.handleChange}
+            placeholder="Have a question? Search for answers"
+          />
+        </div>
+      </div>
     );
   }
 }
