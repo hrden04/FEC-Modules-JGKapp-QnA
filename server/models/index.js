@@ -2,7 +2,7 @@ const db = require('../database/index.js');
 
 module.exports = {
   getQuestionsByProductId: (productId) => {
-    const sqlString = 'SELECT * FROM questions WHERE product_id = $1';
+    const sqlString = 'SELECT * FROM questions WHERE product_id = $1 ORDER BY question_votes DESC';
 
     return db.query(sqlString, [productId]);
   },

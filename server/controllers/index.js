@@ -50,7 +50,7 @@ module.exports = {
   updateQuestionVoteCount: (req, res) => {
     const { questionId, voteCount } = req.body;
 
-    if (questionId && voteCount) {
+    if (questionId && typeof voteCount === 'number') {
       model.updateQuestionVoteCount(questionId, voteCount)
         .then(() => {
           res.status(200).json({
