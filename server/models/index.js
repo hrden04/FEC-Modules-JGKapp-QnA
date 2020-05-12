@@ -21,4 +21,10 @@ module.exports = {
 
     return db.query(sqlString, [questionId]);
   },
+
+  updateQuestionVoteCount: (questionId, voteCount) => {
+    const sqlString = 'UPDATE questions SET question_votes = $1 WHERE question_id = $2';
+
+    return db.query(sqlString, [voteCount, questionId]);
+  },
 };

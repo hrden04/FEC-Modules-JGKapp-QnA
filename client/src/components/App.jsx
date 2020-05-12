@@ -13,6 +13,7 @@ class App extends React.Component {
     };
 
     this.getQuestionsByProductId = this.getQuestionsByProductId.bind(this);
+    this.handleVote = this.handleVote.bind(this);
   }
 
   componentDidMount() {
@@ -35,6 +36,19 @@ class App extends React.Component {
       .catch((err) => console.log(err));
   }
 
+  handleVote(questionId, voteCount) {
+    axios.patch('/api/products/questions', {
+      questionId,
+      voteCount,
+    })
+      .then((results) => results.data.question)
+      .then(() => {
+        this.getQuestionsByProductId(1001);
+      })
+      // eslint-disable-next-line no-console
+      .catch(console.log);
+  }
+
   render() {
     const { questions } = this.state;
 
@@ -45,7 +59,7 @@ class App extends React.Component {
           <Search />
           <div className="question-list">
             {questions.slice(0, 4).map((question) => (
-              <Question question={question} key={question.question_id} />
+              <Question question={question} key={question.question_id} handleVote={this.handleVote} />
             ))}
           </div>
         </div>
