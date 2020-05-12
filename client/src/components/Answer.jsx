@@ -21,6 +21,8 @@ const Answer = ({ answer }) => {
 Answer.propTypes = {
   answer: PropTypes.shape({
     answer_text: PropTypes.string.isRequired,
+    created_at: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
   }).isRequired,
 };
 

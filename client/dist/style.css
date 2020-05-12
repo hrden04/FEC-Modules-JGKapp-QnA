@@ -6,6 +6,15 @@ body {
   font-size: 13px;
   line-height: 19px;
   color: #111;
+}
+
+.app {
+  min-width: 996px;
+  padding-right: 18px;
+  padding-left: 18px;
+}
+
+.main-width {
   max-width: 800px;
 }
 
