@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
@@ -10,9 +12,13 @@ class Question extends React.Component {
 
     this.state = {
       answers: [],
+      numAnsToDisplay: 1,
+      numAnsLeft: 0,
     };
 
     this.getAnswersByQuestionId = this.getAnswersByQuestionId.bind(this);
+    this.showMoreAnswers = this.showMoreAnswers.bind(this);
+    this.collapseAnswers = this.collapseAnswers.bind(this);
   }
 
   componentDidMount() {
@@ -21,6 +27,7 @@ class Question extends React.Component {
 
   getAnswersByQuestionId() {
     const { question } = this.props;
+    const { numAnsToDisplay } = this.state;
     axios.get('/api/products/answers', {
       params: {
         questionId: question.question_id,
@@ -28,17 +35,78 @@ class Question extends React.Component {
     })
       .then((results) => results.data.answers)
       .then((answers) => {
+        const numAnsLeft = answers.length === 0 ? 0 : answers.length - numAnsToDisplay;
         this.setState({
           answers,
+          numAnsLeft,
         });
       })
       // eslint-disable-next-line no-console
       .catch((err) => console.log(err));
   }
 
-  render() {
+  showMoreAnswers() {
     const { answers } = this.state;
+    let { numAnsToDisplay, numAnsLeft } = this.state;
+    numAnsToDisplay += 1;
+    numAnsLeft -= 1;
+    if (answers.length >= numAnsToDisplay) {
+      this.setState({
+        numAnsToDisplay,
+        numAnsLeft,
+      });
+    }
+  }
+
+  collapseAnswers() {
+    const { answers } = this.state;
+    this.setState({
+      numAnsToDisplay: 1,
+      numAnsLeft: answers.length - 1,
+    });
+  }
+
+  render() {
+    const { answers, numAnsLeft, numAnsToDisplay } = this.state;
     const { question, handleVote } = this.props;
+
+    const endOfListContent = () => {
+      if (answers.length === 0) {
+        return (
+          <div className="show-more hypertext">Be the first to answer this question!</div>
+        );
+      }
+      if (numAnsLeft <= 0) {
+        return (
+          <div className="collapse-answers" onClick={this.collapseAnswers}>
+            <span>Collapse all answers</span>
+          </div>
+        );
+      }
+      if (numAnsToDisplay > 1) {
+        return (
+          <div>
+            <div className="show-more hypertext" onClick={this.showMoreAnswers}>
+              See more answers
+              (
+              {numAnsLeft}
+              )
+            </div>
+            <div className="collapse-answers" onClick={this.collapseAnswers}>
+              <span className="inner-button-text">Collapse all answers</span>
+            </div>
+          </div>
+        );
+      }
+      return (
+        <div className="show-more hypertext" onClick={this.showMoreAnswers}>
+          See more answers
+          (
+          {numAnsLeft}
+          )
+        </div>
+      );
+    };
 
     return (
       <div className="flexbox-container">
@@ -55,10 +123,10 @@ class Question extends React.Component {
           <div className="answer-line-container flexbox-container">
             <span className="a-text-bold section-name">Answer:</span>
             <div className="answers-container">
-              {answers.slice(0, 1).map((ans) => (
+              {answers.slice(0, numAnsToDisplay).map((ans) => (
                 <Answer answer={ans} key={ans.answer_id} />
               ))}
-              <div className="show-more hypertext">See more answers</div>
+              {endOfListContent()}
             </div>
           </div>
         </div>
