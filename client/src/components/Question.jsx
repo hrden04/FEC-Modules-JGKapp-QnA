@@ -11,6 +11,8 @@ class Question extends React.Component {
     this.state = {
       answers: [],
     };
+
+    this.getAnswersByQuestionId = this.getAnswersByQuestionId.bind(this);
   }
 
   componentDidMount() {
@@ -36,11 +38,15 @@ class Question extends React.Component {
 
   render() {
     const { answers } = this.state;
-    const { question } = this.props;
+    const { question, handleVote } = this.props;
 
     return (
       <div className="flexbox-container">
-        <QuestionVotes questionVotes={question.question_votes} />
+        <QuestionVotes
+          questionVotes={question.question_votes}
+          questionId={question.question_id}
+          handleVote={handleVote}
+        />
         <div className="question-answer-list">
           <div className="question-line-container flexbox-container">
             <span className="a-text-bold section-name">Question:</span>
@@ -67,6 +73,7 @@ Question.propTypes = {
     question_id: PropTypes.number.isRequired,
     question_votes: PropTypes.number,
   }).isRequired,
+  handleVote: PropTypes.func.isRequired,
 };
 
 export default Question;
