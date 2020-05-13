@@ -1,13 +1,17 @@
 # Project Name
 
-> Project description
+> This project is the question and answers module for an amazon product webpage. This is developed for a service oriented architecure and will be unified in a proxy server.
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  #### Modules
+  - https://github.com/hrden04/FEC-Modules-PLevin
+  - https://github.com/hrden04/FEC-Modules-MBoss
+  - https://github.com/hrden04/FEC-Modules-JGKapp
+  - https://github.com/hrden04/agcFecModulesJOxner
+
+  #### Proxy Server
+  - https://github.com/hrden04/proxy-server-JGKapp
 
 ## Table of Contents
 
@@ -17,14 +21,13 @@
 
 ## Usage
 
-> Some usage instructions
+> To get started with this project you will need to have PostgreSQL downloaded and running. You will also need to create a database named qna_db in PostgreSQL. After this run `npm-install` then `npm run seed-db` which will prompt you for a needed number of primary records. Follow this with `npm run build` and finally `npm start`. You should now be able to see a working version in your browswer. Please examine the package.json file for more scripts for development.
 
 ## Requirements
 
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 6.13.0
-- etc
+- Node
+- npm
+- PostgreSQL
 
 ## Development
 
@@ -33,7 +36,6 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 From within the root directory:
 
 ```sh
-npm install -g webpack
 npm install
 ```
 
