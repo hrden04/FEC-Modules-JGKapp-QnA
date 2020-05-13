@@ -76,6 +76,9 @@ class Question extends React.Component {
           <div className="show-more hypertext">Be the first to answer this question!</div>
         );
       }
+      if (answers.length === 1) {
+        return [];
+      }
       if (numAnsLeft <= 0) {
         return (
           <div className="collapse-answers" onClick={this.collapseAnswers}>
