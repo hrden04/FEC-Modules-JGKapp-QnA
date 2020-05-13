@@ -179,4 +179,29 @@ input {
 
 .show-more {
   padding-top: 6px;
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+
+.answer-container {
+  margin-top: 10px;
+}
+
+.collapse-answers {
+  padding-bottom: 5px;
+  padding-top: 5px;
+  cursor: pointer;
+  background-color: #fff;
+  background: #e7e9ec;
+  border-radius: 3px;
+  border: 1px solid #adb1b8;
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.inner-button-text {
+  padding-right: 10px;
+  padding-left: 10px;
+  vertical-align: middle;
 }

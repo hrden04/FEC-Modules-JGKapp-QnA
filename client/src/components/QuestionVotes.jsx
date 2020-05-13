@@ -15,7 +15,8 @@ const QuestionVotes = ({ questionId, questionVotes, handleVote }) => (
       <li>
         {questionVotes}
         <br />
-        votes
+        vote
+        {questionVotes === 1 ? '' : 's'}
       </li>
       <li>
         <input

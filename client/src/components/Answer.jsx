@@ -11,7 +11,7 @@ const Answer = ({ answer }) => {
   const userString = `By ${answer.username} on ${createdAt}`;
 
   return (
-    <div>
+    <div className="answer-container">
       <p className="answer-text">{answer.answer_text}</p>
       <span className="user-date-text">{userString}</span>
     </div>
