@@ -1,24 +1,21 @@
-* {
+#question-answer-module * {
   box-sizing: border-box;
 }
-body {
+#question-answer-module {
   font-family: 'Ubuntu', Verdana, Arial, Helvetica, sans-serif;
   font-size: 13px;
   line-height: 19px;
   color: #111;
-}
-
-.app {
   min-width: 996px;
   padding-right: 18px;
   padding-left: 18px;
 }
 
-.main-width {
+#question-answer-module .main-width {
   max-width: 800px;
 }
 
-h2 {
+#question-answer-module h2 {
   font-weight: 700;
   font-size: 21px;
   line-height: 1.3;
@@ -28,7 +25,7 @@ h2 {
   color: #111;
 }
 
-hr {
+#question-answer-module hr {
   width: 100%;
   background-color: transparent;
   height: 1px;
@@ -39,7 +36,7 @@ hr {
   border-top: 1px solid #CCC;
 }
 
-.search-wrapper {
+#question-answer-module .search-wrapper {
   display: block;
   position: relative;
   margin-top: 10px;
@@ -48,13 +45,13 @@ hr {
   width: 100%;
 }
 
-.input-container {
+#question-answer-module .input-container {
   height: 31px;
   width: 800px;
   top: 0%;
 }
 
-.search-input {
+#question-answer-module .search-input {
   margin-right: 0;
   padding-right: 25px;
   padding-top: 3px;
@@ -72,7 +69,7 @@ hr {
   box-sizing: border-box;
 }
 
-.icon-search {
+#question-answer-module .icon-search {
   background-image: url(https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIIcon-sprite_1x-e9434610f810a3a99b3f0e49c1b938c9d76628b8._V2_.png);
   background-size: 400px 900px;
   background-repeat: no-repeat;
@@ -87,25 +84,25 @@ hr {
   margin-top: -7px;
 }
 
-.icon-search, .input-container {
+#question-answer-module .icon-search, .input-container {
   position: absolute;
 }
 
-input {
+#question-answer-module input {
   margin: 0;
   font-family: inherit;
 }
 
-.question-list {
+#question-answer-module .question-list {
   margin-bottom: 0;
 }
 
-.flexbox-container {
+#question-answer-module .flexbox-container {
   display: flex;
   flex-direction: row;
 }
 
-.question-votes-list {
+#question-answer-module .question-votes-list {
   list-style: none;
   padding: 0;
   text-align: center;
@@ -114,15 +111,15 @@ input {
   margin: 0;
 }
 
-.up-vote {
+#question-answer-module .up-vote {
   background-image: url('https://m.media-amazon.com/images/G/01/x-locale/communities/discussion_boards/neutral_up_arrow._CB442978120_.png');
 }
 
-.down-vote {
+#question-answer-module .down-vote {
   background-image: url('https://m.media-amazon.com/images/G/01/x-locale/communities/discussion_boards/neutral_down_arrow._CB442978120_.png');
 }
 
-.vote {
+#question-answer-module .vote {
   background-size: 100%;
   background-repeat: no-repeat;
   border: none;
@@ -133,61 +130,61 @@ input {
   background-color: #fff;
 }
 
-.vote:hover {
+#question-answer-module .vote:hover {
   cursor: pointer;
 }
 
-.question-answer-list {
+#question-answer-module .question-answer-list {
   padding-left: 1%;
 }
 
-.a-text-bold {
+#question-answer-module .a-text-bold {
   font-weight: 700;
 }
 
-.section-name {
+#question-answer-module .section-name {
   flex-basis: 100px;
   flex-grow: 0;
   flex-shrink: 0;
 }
 
-.hypertext {
+#question-answer-module .hypertext {
   color: #0066c0;
 }
 
-.asnwer-container {
+#question-answer-module .asnwer-container {
   vertical-align: text-top;
 }
 
-.answer-text {
+#question-answer-module .answer-text {
   margin: 0;
 }
 
-.question-line-container {
+#question-answer-module .question-line-container {
   margin-bottom: 10px;
 }
 
-.answer-line-container {
+#question-answer-module .answer-line-container {
   margin-bottom: 14px;
 }
 
-.user-date-text {
+#question-answer-module .user-date-text {
   white-space: nowrap;
   display: block;
   color: #767676
 }
 
-.show-more {
+#question-answer-module .show-more {
   padding-top: 6px;
   margin-bottom: 6px;
   cursor: pointer;
 }
 
-.answer-container {
+#question-answer-module .answer-container {
   margin-top: 10px;
 }
 
-.collapse-answers, .collapse-questions {
+#question-answer-module .collapse-answers, .collapse-questions {
   padding-bottom: 5px;
   padding-top: 5px;
   cursor: pointer;
@@ -200,12 +197,12 @@ input {
   display: inline-block;
 }
 
-.inner-button-text {
+#question-answer-module .inner-button-text {
   padding-right: 10px;
   padding-left: 10px;
   vertical-align: middle;
 }
 
-.end-questions-container {
+#question-answer-module .end-questions-container {
   text-align: center;
 }
