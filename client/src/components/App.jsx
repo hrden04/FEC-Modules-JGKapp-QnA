@@ -79,8 +79,9 @@ class App extends React.Component {
   showMoreQuestions() {
     const { questions } = this.state;
     let { numQstsToDisplay, numQstsLeft } = this.state;
-    numQstsToDisplay += 1;
-    numQstsLeft -= 1;
+    const numToChange = numQstsLeft > 3 ? 3 : numQstsLeft;
+    numQstsToDisplay += numToChange;
+    numQstsLeft -= numToChange;
     if (questions.length >= numQstsToDisplay) {
       this.setState({
         numQstsToDisplay,

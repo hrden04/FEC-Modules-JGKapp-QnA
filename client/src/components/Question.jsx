@@ -48,8 +48,9 @@ class Question extends React.Component {
   showMoreAnswers() {
     const { answers } = this.state;
     let { numAnsToDisplay, numAnsLeft } = this.state;
-    numAnsToDisplay += 1;
-    numAnsLeft -= 1;
+    const numToChange = numAnsLeft > 3 ? 3 : numAnsLeft;
+    numAnsToDisplay += numToChange;
+    numAnsLeft -= numToChange;
     if (answers.length >= numAnsToDisplay) {
       this.setState({
         numAnsToDisplay,
@@ -82,7 +83,7 @@ class Question extends React.Component {
       if (numAnsLeft <= 0) {
         return (
           <div className="collapse-answers" onClick={this.collapseAnswers}>
-            <span>Collapse all answers</span>
+            <span className="inner-button-text">Collapse all answers</span>
           </div>
         );
       }
