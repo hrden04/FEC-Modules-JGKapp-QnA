@@ -14,6 +14,7 @@ class App extends React.Component {
 
     this.getQuestionsByProductId = this.getQuestionsByProductId.bind(this);
     this.handleVote = this.handleVote.bind(this);
+    this.findQuestionIndex = this.findQuestionIndex.bind(this);
   }
 
   componentDidMount() {
@@ -37,16 +38,33 @@ class App extends React.Component {
   }
 
   handleVote(questionId, voteCount) {
+    const { questions } = this.state;
+
     axios.patch('/api/products/questions', {
       questionId,
       voteCount,
     })
       .then((results) => results.data.question)
       .then(() => {
-        this.getQuestionsByProductId(1001);
+        const index = this.findQuestionIndex(questionId);
+        const updatedQuestions = questions.slice();
+        updatedQuestions[index].question_votes = voteCount;
+        this.setState({
+          questions: updatedQuestions,
+        });
       })
       // eslint-disable-next-line no-console
       .catch(console.log);
+  }
+
+  findQuestionIndex(questionId) {
+    const { questions } = this.state;
+    for (let i = 0; i < questions.length; i += 1) {
+      if (questions[i].question_id === questionId) {
+        return i;
+      }
+    }
+    return -1;
   }
 
   render() {
