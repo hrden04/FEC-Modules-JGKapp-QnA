@@ -1,0 +1,8 @@
+# git file
+.*
+docker-compose.yml
+*.md
+!README.md
+
+node_modules/
+

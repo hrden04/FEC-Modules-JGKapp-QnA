@@ -6,7 +6,7 @@ WORKDIR /src/app
 
 COPY . /src/app
 
-RUN npm install && npm run build
+RUN npm install --production
 
 EXPOSE 4500
 
