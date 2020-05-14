@@ -2,6 +2,9 @@ const { Pool } = require('pg');
 
 const pool = new Pool({
   database: 'qna_db',
+  user: 'postgres',
+  password: 'postgres',
+  host: 'database',
 });
 
 module.exports = {
