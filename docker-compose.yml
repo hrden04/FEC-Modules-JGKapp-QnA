@@ -9,4 +9,4 @@ services:
     depends_on:
       - 'database'
     ports:
-      - '4500:4500'
+      - '80:4500'
