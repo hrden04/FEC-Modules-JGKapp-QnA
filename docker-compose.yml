@@ -10,3 +10,5 @@ services:
       - 'database'
     ports:
       - '80:4500'
+    environment:
+      - NODE_ENV=prod
