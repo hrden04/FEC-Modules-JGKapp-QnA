@@ -1,9 +1,10 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
+const config = require('../config.js');
 const router = require('./routes/index.js');
 
-const PORT = 4500;
+const PORT = config.app.port;
 const app = express();
 
 app.use(morgan('dev'));

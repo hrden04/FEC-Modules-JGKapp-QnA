@@ -113,7 +113,7 @@ class App extends React.Component {
       if (numQstsLeft <= 0) {
         return (
           <div className="collapse-questions" onClick={this.collapseQuestions}>
-            <span>Collapse all questions</span>
+            <span className="inner-button-text">Collapse all questions</span>
           </div>
         );
       }
