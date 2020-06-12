@@ -23,7 +23,7 @@ const prod = {
     host: process.env.PROD_DB_HOST || 'database',
     port: parseInt(process.env.PROD_DB_PORT, 10) || 5432,
     database: process.env.PROD_DB_NAME || 'qna_db',
-    user: process.env.PGUSER,
+    user: process.env.PGUSER || 'postgres',
     password: process.env.PG_AWS_PASSWORD || 'postgres',
   },
 };
