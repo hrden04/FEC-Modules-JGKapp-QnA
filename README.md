@@ -4,6 +4,15 @@
 
 ![](CloneAzonDemo.gif)
 
+## Technologies
+- React.js
+- Node.js
+- Express.js
+- PostgreSQL
+- Jest
+- Enzyme
+- Docker
+
 ## Related Projects
 
   #### Modules
