@@ -1,6 +1,6 @@
 # CloneAzon - Question and Answers
 
-> This project is the question and answers module for an amazon product webpage. This is developed for a service oriented architecure and will be unified in a proxy server.
+> This project is the question and answers module for an amazon product webpage. This is developed as a microservice for service oriented architecure and is unified with all related services in a proxy server.
 
 ![](CloneAzonDemo.gif)
 
@@ -46,7 +46,5 @@
 
 From within the root directory:
 
-```sh
-npm install
-```
+`npm install`
 
