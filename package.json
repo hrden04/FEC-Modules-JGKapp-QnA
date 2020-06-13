@@ -12,7 +12,8 @@
     "server-dev": "nodemon server/index.js",
     "react-dev": "webpack -d --watch",
     "build": "webpack --mode 'production'",
-    "seed-db": "node server/database/seedScript.js"
+    "seed-db": "node server/database/seedScript.js",
+    "test": "jest"
   },
   "dependencies": {
     "@babel/core": "^7.9.0",
@@ -32,12 +33,17 @@
     "webpack-cli": "^3.3.11"
   },
   "devDependencies": {
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.1",
+    "jest": "^26.0.1",
+    "jest-environment-enzyme": "^7.1.2",
+    "jest-enzyme": "^7.1.2",
     "nodemon": "^2.0.3"
   }
 }
