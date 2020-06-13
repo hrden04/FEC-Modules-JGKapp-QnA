@@ -2,6 +2,8 @@
 
 > This project is the question and answers module for an amazon product webpage. This is developed for a service oriented architecure and will be unified in a proxy server.
 
+![](CloneAzonDemo.gif)
+
 ## Related Projects
 
   #### Modules
