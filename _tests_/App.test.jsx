@@ -1,68 +1,158 @@
 /* eslint-env jest */
 import React from 'react';
 import { shallow } from 'enzyme';
+import axios from 'axios';
 import App from '../client/src/components/App.jsx';
 
-describe('Main App Component', () => {
-  jest.mock('axios', () => {
-    const results = {
-      message: 'successfully retrieved images',
-      images: [
-        {
-          image_id: 30,
-          image_url: 'https://picsum.photos/600/400?random=386',
-          product_id: 1001,
-        },
-        {
-          image_id: 31,
-          image_url: 'https://picsum.photos/600/400?random=386',
-          product_id: 1001,
-        },
-        {
-          image_id: 32,
-          image_url: 'https://picsum.photos/600/400?random=386',
-          product_id: 1001,
-        },
-        {
-          image_id: 33,
-          image_url: 'https://picsum.photos/600/400?random=386',
-          product_id: 1001,
-        },
-        {
-          image_id: 34,
-          image_url: 'https://picsum.photos/600/400?random=386',
-          product_id: 1001,
-        },
-        {
-          image_id: 35,
-          image_url: 'https://picsum.photos/600/400?random=386',
-          product_id: 1001,
-        },
-      ],
-    };
+const results = {
+  message: 'Successfully retrieved questions for product id: 1001',
+  questions: [
+    {
+      question_id: 6,
+      question_text: 'Et quisquam voluptas unde illo iure.',
+      product_id: 1001,
+      created_at: '2020-03-10T06:00:00.000Z',
+      user_id: 44,
+      question_votes: 7,
+    },
+    {
+      question_id: 11,
+      question_text: 'Eos assumenda molestiae odio fugiat enim maiores itaque.',
+      product_id: 1001,
+      created_at: '2019-11-28T07:00:00.000Z',
+      user_id: 23,
+      question_votes: 3,
+    },
+    {
+      question_id: 15,
+      question_text: 'Voluptatum temporibus mollitia veniam quas molestiae ut nostrum et.',
+      product_id: 1001,
+      created_at: '2019-08-14T06:00:00.000Z',
+      user_id: 19,
+      question_votes: 3,
+    },
+    {
+      question_id: 8,
+      question_text: 'Vitae quibusdam est hic dolorem ratione distinctio consequuntur.',
+      product_id: 1001,
+      created_at: '2020-01-21T07:00:00.000Z',
+      user_id: 16,
+      question_votes: 1,
+    },
+    {
+      question_id: 9,
+      question_text: 'Neque odit voluptatum.',
+      product_id: 1001,
+      created_at: '2019-07-08T06:00:00.000Z',
+      user_id: 27,
+      question_votes: 0,
+    },
+    {
+      question_id: 17,
+      question_text: 'Qui sint voluptate molestiae et eveniet provident quasi quia debitis.',
+      product_id: 1001,
+      created_at: '2020-02-15T07:00:00.000Z',
+      user_id: 11,
+      question_votes: 0,
+    },
+    {
+      question_id: 10,
+      question_text: 'Voluptas quibusdam repudiandae vel ipsam aperiam eum sed.',
+      product_id: 1001,
+      created_at: '2019-06-06T06:00:00.000Z',
+      user_id: 1,
+      question_votes: 0,
+    },
+    {
+      question_id: 5,
+      question_text: 'Dolor reprehenderit eligendi doloremque ut.',
+      product_id: 1001,
+      created_at: '2019-11-11T07:00:00.000Z',
+      user_id: 6,
+      question_votes: 0,
+    },
+    {
+      question_id: 14,
+      question_text: 'Impedit occaecati vel.',
+      product_id: 1001,
+      created_at: '2019-12-29T07:00:00.000Z',
+      user_id: 25,
+      question_votes: 0,
+    },
+    {
+      question_id: 12,
+      question_text: 'Occaecati est recusandae molestias temporibus consequuntur.',
+      product_id: 1001,
+      created_at: '2020-04-05T06:00:00.000Z',
+      user_id: 44,
+      question_votes: 0,
+    },
+    {
+      question_id: 7,
+      question_text: 'Ut rerum ipsam neque excepturi laudantium nemo.',
+      product_id: 1001,
+      created_at: '2019-07-16T06:00:00.000Z',
+      user_id: 15,
+      question_votes: 0,
+    },
+    {
+      question_id: 13,
+      question_text: 'Alias et modi dicta velit sit.',
+      product_id: 1001,
+      created_at: '2019-09-07T06:00:00.000Z',
+      user_id: 28,
+      question_votes: 0,
+    },
+    {
+      question_id: 16,
+      question_text: 'Laboriosam nesciunt itaque aut aut a.',
+      product_id: 1001,
+      created_at: '2019-12-08T07:00:00.000Z',
+      user_id: 1,
+      question_votes: 0,
+    },
+  ],
+};
 
-    return {
-      get: jest.fn(() => Promise.resolve({ data: results })),
-    };
+describe('Main App Component', () => {
+  beforeEach(() => {
+    axios.get = jest.fn();
+    axios.get.mockResolvedValue({ data: results });
   });
+
+  // jest.mock('axios', () => {
+  //   return {
+  //     get: jest.fn(() => Promise.resolve({ data: results })),
+  //   };
+  // });
 
   test('should render the app component on the screen', () => {
     const wrapper = shallow(<App />);
     expect(wrapper).toExist();
   });
 
-  test('should invoke getImagesById on componentDidMount', () => {
+  test('should invoke getQuestionsByProductId on componentDidMount', () => {
     const wrapper = shallow(<App />);
     const mock = jest.fn();
-    wrapper.instance().getImagesById = mock;
+    wrapper.instance().getQuestionsByProductId = mock;
     wrapper.instance().forceUpdate();
     wrapper.instance().componentDidMount();
     expect(mock).toHaveBeenCalled();
   });
 
-  test('should render MainImage and ImageList Components', () => {
+  test('should render Search Component', () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.find('ImageList')).toHaveLength(1);
-    expect(wrapper.find('MainImage')).toHaveLength(1);
+    expect(wrapper.find('Search')).toHaveLength(1);
+  });
+
+  test('should render top 4 Questions', (done) => {
+    const wrapper = shallow(<App />);
+    const instance = wrapper.instance();
+    Promise.resolve({})
+      .then(instance.componentDidMount.bind(instance))
+      .then(() => {
+        expect(wrapper.find('Question')).toHaveLength(4);
+        done();
+      });
   });
 });
