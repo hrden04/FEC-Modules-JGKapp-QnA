@@ -171,16 +171,4 @@ describe('Main App Component', () => {
         done();
       });
   });
-
-  // Handle in integration test
-  // test('should be able to update vote count', (done) => {
-  //   const wrapper = shallow(<App />);
-  //   const instance = wrapper.instance();
-  //   Promise.resolve({})
-  //     .then(instance.componentDidMount.bind(instance))
-  //     .then(() => {
-  //       instance.handleVote(6, 8);
-  //       done();
-  //     });
-  // });
 });
