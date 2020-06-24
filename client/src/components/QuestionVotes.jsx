@@ -12,7 +12,7 @@ const QuestionVotes = ({ questionId, questionVotes, handleVote }) => (
           onClick={() => handleVote(questionId, questionVotes + 1)}
         />
       </li>
-      <li>
+      <li className="vote-count">
         {questionVotes}
         <br />
         vote
