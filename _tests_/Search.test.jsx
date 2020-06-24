@@ -13,7 +13,6 @@ describe('Search Component', () => {
     const wrapper = mount(<Search />);
     const testVal = 'test';
     wrapper.find('.search-input').simulate('change', { target: { value: testVal } });
-    console.log(wrapper.debug());
     expect(wrapper.find('.search-input').instance().value).toBe(testVal);
   });
 });
