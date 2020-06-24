@@ -1,18 +1,18 @@
 /* eslint-env jest */
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import Search from '../client/src/components/Search.jsx';
 
 describe('Search Component', () => {
   test('should render the search component on the screen', () => {
-    const wrapper = mount(<Search />);
+    const wrapper = shallow(<Search />);
     expect(wrapper).toExist();
   });
 
   test('should allow text input', () => {
-    const wrapper = mount(<Search />);
+    const wrapper = shallow(<Search />);
     const testVal = 'test';
     wrapper.find('.search-input').simulate('change', { target: { value: testVal } });
-    expect(wrapper.find('.search-input').instance().value).toBe(testVal);
+    expect(wrapper.find('.search-input').prop('value')).toBe(testVal);
   });
 });
