@@ -118,13 +118,9 @@ describe('Main App Component', () => {
   beforeEach(() => {
     axios.get = jest.fn();
     axios.get.mockResolvedValue({ data: results });
+    axios.patch = jest.fn();
+    axios.patch.mockResolvedValue({ message: 'successfully updated' });
   });
-
-  // jest.mock('axios', () => {
-  //   return {
-  //     get: jest.fn(() => Promise.resolve({ data: results })),
-  //   };
-  // });
 
   test('should render the app component on the screen', () => {
     const wrapper = shallow(<App />);
@@ -140,19 +136,51 @@ describe('Main App Component', () => {
     expect(mock).toHaveBeenCalled();
   });
 
-  test('should render Search Component', () => {
+  test('should render Search and Header Component', () => {
     const wrapper = shallow(<App />);
     expect(wrapper.find('Search')).toHaveLength(1);
+    expect(wrapper.find('Header')).toHaveLength(1);
   });
 
-  test('should render top 4 Questions', (done) => {
+  test('should render at least 3 Questions when more than 3 exist', (done) => {
     const wrapper = shallow(<App />);
     const instance = wrapper.instance();
     Promise.resolve({})
       .then(instance.componentDidMount.bind(instance))
       .then(() => {
-        expect(wrapper.find('Question')).toHaveLength(4);
+        expect(wrapper.find('Question').length).toBeGreaterThanOrEqual(3);
         done();
       });
   });
+
+  test('should render more or collapse questions when asked', (done) => {
+    const wrapper = shallow(<App />);
+    const instance = wrapper.instance();
+    Promise.resolve({})
+      .then(instance.componentDidMount.bind(instance))
+      .then(() => {
+        const originalCount = wrapper.find('Question').length;
+        wrapper.find('#show-more-questions').simulate('click');
+        const nextCount = wrapper.find('Question').length;
+        expect(nextCount).toBeGreaterThan(originalCount);
+        wrapper.find('#show-more-questions').simulate('click');
+        const lastCount = wrapper.find('Question').length;
+        expect(lastCount).toBeGreaterThan(nextCount);
+        wrapper.find('#collapse-questions').simulate('click');
+        expect(wrapper.find('Question').length).toBe(originalCount);
+        done();
+      });
+  });
+
+  // Handle in integration test
+  // test('should be able to update vote count', (done) => {
+  //   const wrapper = shallow(<App />);
+  //   const instance = wrapper.instance();
+  //   Promise.resolve({})
+  //     .then(instance.componentDidMount.bind(instance))
+  //     .then(() => {
+  //       instance.handleVote(6, 8);
+  //       done();
+  //     });
+  // });
 });
