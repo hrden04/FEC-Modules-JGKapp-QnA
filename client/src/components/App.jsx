@@ -112,7 +112,7 @@ class App extends React.Component {
       }
       if (numQstsLeft <= 0) {
         return (
-          <div className="collapse-questions" onClick={this.collapseQuestions}>
+          <div className="collapse-questions" id="collapse-questions" onClick={this.collapseQuestions}>
             <span className="inner-button-text">Collapse all questions</span>
           </div>
         );
@@ -120,20 +120,20 @@ class App extends React.Component {
       if (numQstsToDisplay > 4) {
         return (
           <div>
-            <div className="show-more hypertext" onClick={this.showMoreQuestions}>
+            <div className="show-more hypertext" id="show-more-questions" onClick={this.showMoreQuestions}>
               See more answered questions
               (
               {numQstsLeft}
               )
             </div>
-            <div className="collapse-questions" onClick={this.collapseQuestions}>
+            <div className="collapse-questions" id="collapse-questions" onClick={this.collapseQuestions}>
               <span className="inner-button-text">Collapse all questions</span>
             </div>
           </div>
         );
       }
       return (
-        <div className="show-more hypertext" onClick={this.showMoreQuestions}>
+        <div className="show-more hypertext" id="show-more-questions" onClick={this.showMoreQuestions}>
           See more answered questions
           (
           {numQstsLeft}
